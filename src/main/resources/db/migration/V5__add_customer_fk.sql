@@ -1,0 +1,1 @@
+ALTER TABLE oms.orders ADD CONSTRAINT FK_ORDERS_ON_CUSTOMERS FOREIGN KEY (customer_id) REFERENCES oms.customers(id);
