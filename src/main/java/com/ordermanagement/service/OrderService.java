@@ -6,15 +6,14 @@ import com.ordermanagement.model.Customer;
 import com.ordermanagement.model.Order;
 import com.ordermanagement.model.OrderItem;
 import com.ordermanagement.model.Product;
-import com.ordermanagement.repository.CustomerRepository;
 import com.ordermanagement.repository.OrderItemRepository;
 import com.ordermanagement.repository.OrderRepository;
-import com.ordermanagement.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +36,9 @@ public class OrderService{
     @Autowired
     private OrderItemService orderItemService;
 
-    public List<Order> getAllOrders(){
-        return orderRepository.findAll();
+    public List<Order> getAllOrders(Integer pageNumber, Integer pageSize){
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return orderRepository.findAll(pageable).get().toList();
     }
 
     public Order getOrderById(Long id) throws Exception{
