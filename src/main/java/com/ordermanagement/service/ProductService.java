@@ -13,8 +13,8 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-    public List<Product> getAllProducts(){
-        return productRepository.findAll();
+    public List<Product> getAllProducts(String query){
+        return productRepository.getAll(query);
     }
 
     public Product getProductById(Long id) throws Exception{
