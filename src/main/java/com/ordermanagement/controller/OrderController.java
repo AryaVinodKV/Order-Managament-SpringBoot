@@ -21,7 +21,7 @@ public class OrderController {
 
     @GetMapping
     public List<Order> getAllOrders(@RequestParam Integer pageNumber, @RequestParam Integer pageSize){
-        log.info("heyyyy!");
+        log.info("");
         return orderService.getAllOrders(pageNumber, pageSize);
     }
 
